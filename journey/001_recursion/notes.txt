@@ -16,3 +16,51 @@ JOVE delete a section
 - set-mark: ^Space (beginning)
 - cut: ^W
 - then you can yank it with ^y
+--------------------------------------------------------------------
+
+Exercise 1.6.:
+
+Why cannot we define `if` as an ordinary procedure?
+
+To answer this, I think first we need to see what is a special form?
+
+`(define x 3)` is not a combination, but a special form.
+These are exemptions to the general evaluation rule. Each special
+form has it's own evaluation rule.
+
+`(if <predicative> <consequence> <alternative>)` is another special
+form. If `if` would not be a special form, then the general evaluation
+rule would be applicative to it.
+
+General evaluation rule:
+1. evaluate the sub-expressions of the combination
+2. Apply the operator to the arguments.
+
+The general evaluation rule has a recursive nature. This is called
+applicative-order evaluation. An alternative would be to fully expand
+and then reduce the sub-expressions, so that at the end we only have an
+expression, that contains primitive values - that is called normal-order
+evaluation.
+
+The interpreter itself uses applicative-order evaluation.
+
+SO:
+
+The `new-if` is evaluated when invoked with executing first the sub-
+expressions, thus: the predicate, the consequence and the alternative
+would be all evaluated before the `new-if` is executed.
+
+In the example we can see, that `(good-enough? guess x)`, and 
+`(sqrt-iter (improve guess x) x)` would be evaluated as well.
+
+This would result in an infinite-loop, as there is no stop to this,
+as in the function call of `sqrt-iter` again we would call it due
+to the applicative-order evaluation rule.
+
+To avoid this, we need to have special-from `if`, which is an exemption
+to the general evaluation rule.
+
+-----
+
+Interactive spell-check of a file in terminal:
+`aspell check ./notes.txt`
