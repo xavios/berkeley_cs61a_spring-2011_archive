@@ -1,0 +1,18 @@
+combining method
+there is a:
+	- base case
+	  the piece that can be solved without calling the function
+	- and there is a recursive case
+	  the piece that is solved by the fn calling itself
+	  
+---
+JOVE copy multiple lines from one buffer to another
+- set-mark at the beginning: ^Space
+- go to the last line you want to be copied
+- M-w to copy
+- in the other buffer ^Y to yank the text in
+---
+JOVE delete a section
+- set-mark: ^Space (beginning)
+- cut: ^W
+- then you can yank it with ^y
