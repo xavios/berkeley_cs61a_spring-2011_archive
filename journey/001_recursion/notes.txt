@@ -1,4 +1,4 @@
-combining method
+RECURSION - combining method
 there is a:
 	- base case
 	  the piece that can be solved without calling the function
