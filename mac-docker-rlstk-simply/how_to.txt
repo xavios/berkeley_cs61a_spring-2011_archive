@@ -1,0 +1,10 @@
+docker build --load -t ubuntu_on_mac .
+
+docker run  -itd \
+  -v $HOME/dev/andras/local_dev_env:/home \
+  --name ubuntu_container \
+  ubuntu_on_mac
+
+docker ps
+
+docker exec -it #### /bin/bash
